@@ -21,8 +21,9 @@ def get_or_create_room(room_alias):
     if resp.ok:
         room_id = resp.json()["room_id"]
     else:
-        resp = requests.post(f"{MATRIX_API}/createroom", json={"preset": "public_chat", "room_alias_name":room_alias_name, "name": "bot test"}, params={"access_token":access_token})
-        room_id = resp.json()["room_id"]
+        resp = requests.post(f"{MATRIX_API}/createRoom", json={"preset": "public_chat", "room_alias_name":room_alias_name, "name": "bot test"}, params={"access_token":access_token}).json()
+        print(resp)
+        room_id = resp["room_id"]
     return room_id
 
 def register_user(username, password):

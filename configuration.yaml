@@ -20,11 +20,12 @@ parsers:
 
 connectors:
   - name: matrix
-    mxid: "@bot:localhost"
+    mxid: "@opsdroid:localhost"
     password: "hello"
     homeserver: "http://localhost:8008"
     rooms: 
       main: "#bottest:localhost"
+      test: "#test:localhost"
     nick: opsdroid
     room_specific_nicks: False
     no-cache: true
