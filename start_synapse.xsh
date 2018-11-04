@@ -117,7 +117,11 @@ if reg != username:
     print(f"{username} registered")
     access_token = reg
 else:
-    access_token = requests.post(f"{MATRIX_API}/login", json={"type":"m.login.password", "identifier":{"type": "m.id.user", "user":username}, "password":password}).json()["access_token"]
+    access_token = requests.post(f"{MATRIX_API}/login",
+                                 json={"type":"m.login.password",
+                                       "identifier": {"type": "m.id.user",
+                                                      "user":username},
+                                       "password":password}).json()["access_token"]
 
 
 print("Creating rooms...")
@@ -127,4 +131,6 @@ print(room_ids)
 
 print("Inviting Admin user...")
 for room_id in room_ids.values():
-    resp = requests.post(f"{MATRIX_API}/rooms/{room_id}/invite", json={"user_id": f"@{admin_user}:localhost"}, params={"access_token":access_token, "room_id":room_id})
+    resp = requests.post(f"{MATRIX_API}/rooms/{room_id}/invite",
+                         json={"user_id": f"@{admin_user}:localhost"},
+                         params={"access_token": access_token, "room_id":room_id})
