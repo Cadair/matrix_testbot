@@ -1,0 +1,38 @@
+welcome-message: false
+
+## Set the logging level
+logging:
+  level: debug
+  console: true
+
+## Set the location for opsdroid to install modules
+# module-path: "/usr/src/app/"
+
+## Configure the web server
+web:
+  host: '0.0.0.0'
+  port: 8088
+
+## Parsers
+parsers:
+  - name: regex
+    enabled: true
+
+connectors:
+  - name: matrix
+    mxid: "@bot:localhost"
+    password: "hello"
+    homeserver: "http://localhost:8008"
+    rooms: 
+      main: "#bottest:localhost"
+    nick: opsdroid
+    room_specific_nicks: False
+    no-cache: true
+
+#databases:
+#  - name: matrix
+#    repo: https://github.com/SolarDrew/database-matrix
+#    # no-cache: true
+
+skills:
+  - name: hello
