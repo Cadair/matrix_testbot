@@ -69,7 +69,7 @@ server_name = user_mxid.split(":")[1]
 if "rooms" in matrix:
     rooms = matrix["rooms"]
 elif "room" in matrix:
-    rooms = {"main": matrix["room"]}
+    rooms = {"main": {"alias": matrix["room"]}}
 else:
     raise ValueError("Can not parse rooms in config")
 
@@ -129,7 +129,7 @@ else:
 
 
 print("Creating rooms...")
-room_ids = {name: get_or_create_room(name, room_alias) for name, room_alias in rooms.items()}
+room_ids = {name: get_or_create_room(name, room_alias["alias"]) for name, room_alias in rooms.items()}
 print(room_ids)
 
 
