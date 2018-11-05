@@ -11,6 +11,10 @@ MATRIX_API = "http://localhost:8008/_matrix/client/r0"
 admin_user = admin_password = $(whoami).strip()
 
 
+if not !(docker ps):
+    raise ValueError("docker must be installed and started to use this script.")
+
+
 """
 Functions
 """
